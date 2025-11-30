@@ -13,7 +13,9 @@ export function ThemeProvider({
         setMounted(true)
     }, [])
 
-    return (
-        mounted && <NextThemesProvider {...props}>{children}</NextThemesProvider>
-    )
+    if (!mounted) {
+        return null
+    }
+
+    return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
